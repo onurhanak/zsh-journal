@@ -28,6 +28,22 @@ That’s it.
 
 ## Installation
 
+### With Oh-my-zsh
+
+## Installation
+
+Clone into Oh My Zsh's custom plugin directory:
+
+```sh
+git clone https://github.com/onurhanak/zsh-journal ~/.oh-my-zsh/custom/plugins/zsh-journal
+```
+Then add it to your plugins:
+
+```bash
+plugins=(git zsh-journal)
+source ~/.zshrc
+```
+
 Clone the repo somewhere:
 
 ```bash
@@ -37,7 +53,7 @@ git clone https://github.com/onurhanak/zsh-journal ~/.zsh-journal
 Source it in your .zshrc:
 
 ```bash
-source ~/.zsh-journal/journal-plugin.zsh
+source ~/.zsh-journal/zsh-journal.plugin.zsh
 ```
 
 Restart your terminal or run `source ~/.zshrc` and you're good to go.
