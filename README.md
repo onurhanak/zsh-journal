@@ -42,6 +42,19 @@ plugins=(git zsh-journal)
 source ~/.zshrc
 ```
 
+### With Antidote
+
+Add the plugin to your .zsh_plugins.txt file:
+
+```onurhanak/zsh-journal```
+
+Rebuild and reload:
+
+```bash
+antidote bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.zsh
+source ~/.zsh_plugins.zsh
+```
+
 ### Manual
 
 Clone the repo somewhere:
