@@ -1,6 +1,6 @@
 # storage 
-: ${ZSH_COMMAND_NOTES_FILE:="$HOME/.zsh-command-notes.txt"}
-: ${ZSH_COMMAND_LAST_CMD_FILE:="$HOME/.zsh-command-lastcmd.tmp"}
+: ${ZSH_JOURNAL_FILE:="$HOME/.zsh-journal.txt"}
+: ${ZSH_JOURNAL_LAST_CMD_FILE:="$HOME/.zsh-journal-lastcmd.tmp"}
 
 # capture last executed command
 function _zsh_command_notes_capture_history() {
@@ -8,7 +8,7 @@ function _zsh_command_notes_capture_history() {
   
   # ignore note* commands
   if [[ "$cmd" != note* && "$cmd" != notes* ]]; then
-    echo "$cmd" > "$ZSH_COMMAND_LAST_CMD_FILE"
+    echo "$cmd" > "$ZSH_JOURNAL_LAST_CMD_FILE"
   fi
 }
 
@@ -24,16 +24,16 @@ function note() {
     return 1
   fi
 
-  if [[ ! -f "$ZSH_COMMAND_LAST_CMD_FILE" ]]; then
+  if [[ ! -f "$ZSH_JOURNAL_LAST_CMD_FILE" ]]; then
     echo "No previous command captured."
     return 1
   fi
 
-  last_cmd="$(<"$ZSH_COMMAND_LAST_CMD_FILE" | sed 's/[[:space:]]*$//')"
+  last_cmd="$(<"$ZSH_JOURNAL_LAST_CMD_FILE" | sed 's/[[:space:]]*$//')"
   note_text="$*"
   entry="$last_cmd # $note_text"
 
-  touch "$ZSH_COMMAND_NOTES_FILE"
+  touch "$ZSH_JOURNAL_FILE"
 
   existing=$(awk -F'#' -v cmd="$last_cmd" '
     {
@@ -43,7 +43,7 @@ function note() {
         exit
       }
     }
-  ' "$ZSH_COMMAND_NOTES_FILE")
+  ' "$ZSH_JOURNAL_FILE")
 
   # prevent duplicate commands
   if [[ -n "$existing" ]]; then
@@ -62,17 +62,17 @@ function note() {
         gsub(/^[ \t]+|[ \t]+$/, "", $1)
         if ($1 != cmd) print $0
       }
-    ' "$ZSH_COMMAND_NOTES_FILE" > "$temp_file"
-    mv "$temp_file" "$ZSH_COMMAND_NOTES_FILE"
+    ' "$ZSH_JOURNAL_FILE" > "$temp_file"
+    mv "$temp_file" "$ZSH_JOURNAL_FILE"
   fi
 
-  echo "$entry" >> "$ZSH_COMMAND_NOTES_FILE"
+  echo "$entry" >> "$ZSH_JOURNAL_FILE"
   echo "Note saved for: $last_cmd"
 }
 
 # list commands
 function notes() {
-  if [[ ! -f "$ZSH_COMMAND_NOTES_FILE" ]]; then
+  if [[ ! -f "$ZSH_JOURNAL_FILE" ]]; then
     echo "No notes found."
     return 1
   fi
@@ -85,6 +85,6 @@ function notes() {
       gsub(/^[ \t]+|[ \t]+$/, "", note)
       printf("[%d] %s\n    → %s\n\n", NR, cmd, note)
     }
-  ' "$ZSH_COMMAND_NOTES_FILE"
+  ' "$ZSH_JOURNAL_FILE"
 }
 
