@@ -47,14 +47,14 @@ source ~/.zshrc
 Add the plugin to your .zsh_plugins.txt file:
 
 ```bash 
-echo onurhanak/zsh-journal >> .zsh_plugins.txt
+$ echo onurhanak/zsh-journal >> .zsh_plugins.txt
 ```
 
 Rebuild and reload:
 
 ```bash
-antidote bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.zsh
-source ~/.zsh_plugins.zsh
+$ antidote bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.zsh
+$ source ~/.zsh_plugins.zsh
 ```
 
 ### Manual
@@ -62,7 +62,7 @@ source ~/.zsh_plugins.zsh
 Clone the repo somewhere:
 
 ```bash
-git clone https://github.com/onurhanak/zsh-journal ~/.zsh-journal
+$ git clone https://github.com/onurhanak/zsh-journal ~/.zsh-journal
 ```
 
 Source it in your .zshrc:
@@ -75,10 +75,10 @@ Restart your terminal or run `source ~/.zshrc` and you're good to go.
 
 ## Usage
 
-- `note "your description"`  
+- `$ note "your description"`  
   Saves a note for the last command you ran.
 
-- `notes`  
+- `$ notes`  
   Lists all saved command + note pairs.
 
 If you try to note a command you have already saved before, it will ask if you want to overwrite the previous note.
