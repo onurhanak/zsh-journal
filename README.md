@@ -56,11 +56,14 @@ If you try to note a command you have already saved before, it will ask if you w
 
 By default, it saves everything to:
 
+```bash
 ~/.zsh-journal.txt
-
+```
 You can change that by setting an environment variable in your `.zshrc`:
 
+```bash
 export ZSH_JOURNAL_FILE="/path/to/.my_custom_journal_file.txt"
+```
 
 ## Gotchas
 
