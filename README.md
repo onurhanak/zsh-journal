@@ -46,7 +46,9 @@ source ~/.zshrc
 
 Add the plugin to your .zsh_plugins.txt file:
 
-```echo onurhanak/zsh-journal >> .zsh_plugins.txt```
+```bash 
+echo onurhanak/zsh-journal >> .zsh_plugins.txt
+```
 
 Rebuild and reload:
 
