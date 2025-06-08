@@ -30,8 +30,6 @@ That’s it.
 
 ### With Oh-my-zsh
 
-## Installation
-
 Clone into Oh My Zsh's custom plugin directory:
 
 ```sh
@@ -43,6 +41,8 @@ Then add it to your plugins:
 plugins=(git zsh-journal)
 source ~/.zshrc
 ```
+
+### Manual
 
 Clone the repo somewhere:
 
